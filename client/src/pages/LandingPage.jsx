@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { SignInButton, useAuth } from '@clerk/clerk-react';
-import { CheckCircle, Zap, Shield, BarChart2, Users, Tag } from 'lucide-react';
+import { CheckCircle, Zap, Shield, BarChart2, Users, Tag, ArrowRight } from 'lucide-react';
 import { useEffect } from 'react';
 
 const features = [
@@ -49,19 +49,18 @@ export default function LandingPage() {
                 padding: '80px 32px 60px', flex: 1,
             }}>
                 <div style={{
-                    display: 'inline-block', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.1em',
-                    background: 'rgba(99,102,241,0.15)', color: '#818cf8',
-                    border: '1px solid rgba(99,102,241,0.3)', borderRadius: 99,
+                    display: 'inline-block', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.12em',
+                    background: 'rgba(99,102,241,0.1)', color: '#818cf8',
+                    border: '1px solid rgba(99,102,241,0.2)', borderRadius: 99,
                     padding: '5px 16px', marginBottom: 24,
                 }}>
-                    ⚡ PRODUCTION-READY MINI SAAS
+                    PRODUCTION-READY MINI SAAS
                 </div>
 
                 <h1 style={{
                     fontSize: 'clamp(2.2rem, 6vw, 3.8rem)',
                     fontWeight: 900, lineHeight: 1.1,
-                    background: 'linear-gradient(135deg, #f1f1f5, #94a3b8)',
-                    WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                    color: 'var(--text-primary)',
                     margin: '0 0 20px', maxWidth: 700,
                 }}>
                     Manage Tasks.
@@ -81,11 +80,11 @@ export default function LandingPage() {
 
                 <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center' }}>
                     <SignInButton mode="modal">
-                        <button className="btn-primary" style={{ padding: '12px 28px', fontSize: '1rem' }}>
-                            Get Started Free →
+                        <button className="btn-primary" style={{ padding: '14px 28px', fontSize: '1rem' }}>
+                            Get Started Free <ArrowRight size={18} />
                         </button>
                     </SignInButton>
-                    <a href="https://github.com" target="_blank" rel="noreferrer" className="btn-ghost" style={{ padding: '12px 24px', fontSize: '1rem', textDecoration: 'none' }}>
+                    <a href="https://github.com" target="_blank" rel="noreferrer" className="btn-ghost" style={{ padding: '14px 28px', fontSize: '1rem', textDecoration: 'none' }}>
                         View Code
                     </a>
                 </div>
@@ -97,7 +96,7 @@ export default function LandingPage() {
                             fontSize: '0.78rem', color: 'var(--text-muted)',
                             display: 'flex', alignItems: 'center', gap: 6,
                         }}>
-                            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', display: 'inline-block' }} />
+                            <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#10b981', display: 'inline-block' }} />
                             {badge}
                         </span>
                     ))}
@@ -114,7 +113,7 @@ export default function LandingPage() {
                         <div key={title} className="card" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
                             <div style={{
                                 width: 40, height: 40, borderRadius: 10,
-                                background: 'rgba(99,102,241,0.12)',
+                                background: 'rgba(99,102,241,0.1)',
                                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                             }}>
                                 <Icon size={20} color="#818cf8" />
@@ -128,3 +127,4 @@ export default function LandingPage() {
         </div>
     );
 }
+

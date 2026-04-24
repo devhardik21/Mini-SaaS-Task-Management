@@ -1,4 +1,5 @@
 import { formatDistanceToNow } from 'date-fns';
+import { ClipboardList } from 'lucide-react';
 
 export default function ActivityFeed({ activities, loading }) {
     if (loading) {
@@ -14,8 +15,10 @@ export default function ActivityFeed({ activities, loading }) {
     if (!activities?.length) {
         return (
             <div style={{ textAlign: 'center', padding: '32px 0', color: 'var(--text-muted)' }}>
-                <div style={{ fontSize: '2rem', marginBottom: 8 }}>📋</div>
-                <div>No activity yet. Create your first task!</div>
+                <div style={{ width: 40, height: 40, borderRadius: 10, background: 'var(--bg-hover)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 12px' }}>
+                    <ClipboardList size={20} color="var(--text-muted)" />
+                </div>
+                <div style={{ fontSize: '0.85rem' }}>No activity yet.</div>
             </div>
         );
     }
@@ -57,3 +60,4 @@ export default function ActivityFeed({ activities, loading }) {
         </div>
     );
 }
+

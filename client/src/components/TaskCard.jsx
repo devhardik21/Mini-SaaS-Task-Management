@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { Calendar, Tag, Trash2, Edit2, CheckCircle, Clock, Loader } from 'lucide-react';
+import { Calendar, Tag, Trash2, Edit2, CheckCircle, Clock, Loader, User, AlertCircle, ChevronUp } from 'lucide-react';
 import { format, isPast, parseISO } from 'date-fns';
 
 const PRIORITY_CONFIG = {
-    low: { label: 'Low', className: 'badge-low', dot: '#22c55e' },
+    low: { label: 'Low', className: 'badge-low', dot: '#10b981' },
     medium: { label: 'Medium', className: 'badge-medium', dot: '#f59e0b' },
     high: { label: 'High', className: 'badge-high', dot: '#ef4444' },
 };
@@ -87,15 +87,10 @@ export default function TaskCard({ task, onUpdate, onDelete, onEdit, isAdmin }) 
 
             {/* Badges row */}
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 12 }}>
-                <span className={`${priority.className}`} style={{
-                    fontSize: '0.72rem', fontWeight: 700, padding: '3px 10px',
-                    borderRadius: 99, letterSpacing: '0.02em',
-                }}>
-                    ▲ {priority.label}
+                <span className={`${priority.className}`}>
+                    <ChevronUp size={12} /> {priority.label}
                 </span>
-                <span className={`${status.className}`} style={{
-                    fontSize: '0.72rem', fontWeight: 600, padding: '3px 10px', borderRadius: 99,
-                }}>
+                <span className={`${status.className}`}>
                     {status.label}
                 </span>
                 {task.label && (
@@ -112,8 +107,9 @@ export default function TaskCard({ task, onUpdate, onDelete, onEdit, isAdmin }) 
                         fontSize: '0.72rem', fontWeight: 600, padding: '3px 10px',
                         borderRadius: 99, background: 'rgba(239,68,68,0.15)',
                         color: '#ef4444', border: '1px solid rgba(239,68,68,0.3)',
+                        display: 'flex', alignItems: 'center', gap: 4
                     }}>
-                        ⚠ Overdue
+                        <AlertCircle size={10} /> Overdue
                     </span>
                 )}
             </div>
@@ -128,8 +124,8 @@ export default function TaskCard({ task, onUpdate, onDelete, onEdit, isAdmin }) 
                         </span>
                     )}
                     {isAdmin && task.user_name && (
-                        <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)' }}>
-                            👤 {task.user_name}
+                        <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', display: 'flex', alignItems: 'center', gap: 4 }}>
+                            <User size={12} /> {task.user_name}
                         </span>
                     )}
                 </div>
@@ -139,15 +135,13 @@ export default function TaskCard({ task, onUpdate, onDelete, onEdit, isAdmin }) 
                     <button
                         onClick={handleAdvanceStatus}
                         disabled={updating}
+                        className="btn-ghost"
                         style={{
-                            display: 'flex', alignItems: 'center', gap: 5,
-                            background: 'rgba(99,102,241,0.12)', color: '#818cf8',
-                            border: '1px solid rgba(99,102,241,0.25)', borderRadius: 8,
                             padding: '5px 12px', fontSize: '0.78rem', fontWeight: 600,
-                            cursor: updating ? 'not-allowed' : 'pointer', opacity: updating ? 0.7 : 1,
+                            background: 'var(--color-primary-soft)', border: 'none', color: 'var(--color-primary-light)'
                         }}
                     >
-                        {updating ? <Loader size={12} style={{ animation: 'spin 0.8s linear infinite' }} /> : <CheckCircle size={12} />}
+                        {updating ? <Loader size={12} className="animate-spin" /> : <CheckCircle size={12} />}
                         {status.next === 'in_progress' ? 'Start' : 'Complete'}
                     </button>
                 )}
@@ -155,3 +149,4 @@ export default function TaskCard({ task, onUpdate, onDelete, onEdit, isAdmin }) 
         </div>
     );
 }
+

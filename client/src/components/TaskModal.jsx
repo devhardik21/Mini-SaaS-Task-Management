@@ -45,19 +45,24 @@ export default function TaskModal({ isOpen, onClose, onSubmit, task }) {
         <div className="modal-overlay" onClick={(e) => e.target === e.currentTarget && onClose()}>
             <div className="modal-box">
                 {/* Header */}
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 22 }}>
-                    <h2 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 700 }}>
-                        {isEdit ? 'Edit Task' : 'Create New Task'}
-                    </h2>
-                    <button onClick={onClose} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', padding: 4 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 28 }}>
+                    <div>
+                        <h2 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 800, color: 'var(--text-primary)' }}>
+                            {isEdit ? 'Edit Task' : 'New Task'}
+                        </h2>
+                        <p style={{ margin: '4px 0 0', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                            {isEdit ? 'Update your task details below.' : 'Add a new task to your list.'}
+                        </p>
+                    </div>
+                    <button onClick={onClose} style={{ background: 'var(--bg-hover)', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', padding: 8, borderRadius: 10, display: 'flex' }}>
                         <X size={20} />
                     </button>
                 </div>
 
-                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
                     {/* Title */}
                     <div>
-                        <label className="label">Task Title *</label>
+                        <label className="label">Task Title</label>
                         <input
                             className="input"
                             type="text"
@@ -66,6 +71,7 @@ export default function TaskModal({ isOpen, onClose, onSubmit, task }) {
                             onChange={(e) => setForm({ ...form, title: e.target.value })}
                             required
                             maxLength={255}
+                            autoFocus
                         />
                     </div>
 
@@ -74,7 +80,7 @@ export default function TaskModal({ isOpen, onClose, onSubmit, task }) {
                         <label className="label">Description</label>
                         <textarea
                             className="input"
-                            placeholder="Add more details..."
+                            placeholder="Add more details (optional)..."
                             value={form.description}
                             onChange={(e) => setForm({ ...form, description: e.target.value })}
                             rows={3}
@@ -83,13 +89,13 @@ export default function TaskModal({ isOpen, onClose, onSubmit, task }) {
                     </div>
 
                     {/* Priority + Status row */}
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                         <div>
                             <label className="label">Priority</label>
                             <select className="select" value={form.priority} onChange={(e) => setForm({ ...form, priority: e.target.value })}>
-                                <option value="low">🟢 Low</option>
-                                <option value="medium">🟡 Medium</option>
-                                <option value="high">🔴 High</option>
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
                             </select>
                         </div>
                         <div>
@@ -103,7 +109,7 @@ export default function TaskModal({ isOpen, onClose, onSubmit, task }) {
                     </div>
 
                     {/* Label + Due Date row */}
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                         <div>
                             <label className="label">Label</label>
                             <input
@@ -128,11 +134,10 @@ export default function TaskModal({ isOpen, onClose, onSubmit, task }) {
                     </div>
 
                     {/* Actions */}
-                    <div style={{ display: 'flex', gap: 10, justifyContent: 'flex-end', marginTop: 8 }}>
-                        <button type="button" className="btn-ghost" onClick={onClose}>Cancel</button>
-                        <button type="submit" className="btn-primary" disabled={saving}>
-                            {saving ? <Loader size={15} style={{ animation: 'spin 0.8s linear infinite' }} /> : null}
-                            {isEdit ? 'Update Task' : 'Create Task'}
+                    <div style={{ display: 'flex', gap: 12, justifyContent: 'flex-end', marginTop: 12 }}>
+                        <button type="button" className="btn-ghost" onClick={onClose} style={{ border: 'none' }}>Cancel</button>
+                        <button type="submit" className="btn-primary" disabled={saving} style={{ minWidth: 120, justifyContent: 'center' }}>
+                            {saving ? <Loader size={16} className="animate-spin" /> : (isEdit ? 'Save Changes' : 'Create Task')}
                         </button>
                     </div>
                 </form>
@@ -140,3 +145,4 @@ export default function TaskModal({ isOpen, onClose, onSubmit, task }) {
         </div>
     );
 }
+

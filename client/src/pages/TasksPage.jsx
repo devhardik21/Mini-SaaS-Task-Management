@@ -4,7 +4,7 @@ import { useAppUser } from '../hooks/useAppUser.js';
 import TaskCard from '../components/TaskCard.jsx';
 import TaskModal from '../components/TaskModal.jsx';
 import FilterBar from '../components/FilterBar.jsx';
-import { Plus, Search, Filter } from 'lucide-react';
+import { Plus, Search, Filter, Target } from 'lucide-react';
 import api from '../lib/axios.js';
 
 export default function TasksPage() {
@@ -76,7 +76,9 @@ export default function TasksPage() {
                 </div>
             ) : tasks.length === 0 ? (
                 <div className="card" style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--text-muted)' }}>
-                    <div style={{ fontSize: '3rem', marginBottom: 16 }}>🎯</div>
+                    <div style={{ width: 64, height: 64, borderRadius: 16, background: 'var(--bg-hover)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
+                        <Target size={32} color="var(--text-muted)" />
+                    </div>
                     <h3 style={{ margin: '0 0 8px', color: 'var(--text-primary)' }}>No tasks found</h3>
                     <p style={{ margin: 0, fontSize: '0.9rem', maxWidth: 300, marginLeft: 'auto', marginRight: 'auto' }}>
                         Try adjusting your filters or create a new task to get started.
@@ -106,3 +108,4 @@ export default function TasksPage() {
         </div>
     );
 }
+

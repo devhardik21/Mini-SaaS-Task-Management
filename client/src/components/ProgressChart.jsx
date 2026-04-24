@@ -2,6 +2,7 @@ import {
     AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from 'recharts';
 import { format, parseISO } from 'date-fns';
+import { TrendingUp } from 'lucide-react';
 
 const CustomTooltip = ({ active, payload, label }) => {
     if (!active || !payload?.length) return null;
@@ -34,7 +35,9 @@ export default function ProgressChart({ data, loading }) {
                     height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center',
                     color: 'var(--text-muted)', flexDirection: 'column', gap: 6, fontSize: '0.85rem',
                 }}>
-                    <div style={{ fontSize: '2rem' }}>📈</div>
+                    <div style={{ width: 44, height: 44, borderRadius: 12, background: 'var(--bg-hover)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 8 }}>
+                        <TrendingUp size={20} color="var(--text-muted)" />
+                    </div>
                     Complete tasks to see your progress here
                 </div>
             ) : (

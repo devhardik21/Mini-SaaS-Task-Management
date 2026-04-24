@@ -69,13 +69,18 @@ export default function Sidebar({ user }) {
                     </div>
                     <span style={{
                         fontSize: '0.7rem',
-                        padding: '2px 8px',
+                        padding: '2px 10px',
                         borderRadius: 99,
-                        background: user.role === 'admin' ? 'rgba(99,102,241,0.2)' : 'rgba(34,197,94,0.15)',
-                        color: user.role === 'admin' ? '#818cf8' : '#22c55e',
+                        background: user.role === 'admin' ? 'rgba(99,102,241,0.15)' : 'rgba(16, 185, 129, 0.1)',
+                        color: user.role === 'admin' ? '#818cf8' : '#10b981',
                         fontWeight: 600,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 4,
+                        width: 'fit-content'
                     }}>
-                        {user.role === 'admin' ? '⚡ Admin' : '● Member'}
+                        {user.role === 'admin' && <Zap size={10} />}
+                        {user.role === 'admin' ? 'Admin' : 'Member'}
                     </span>
                 </div>
             )}
