@@ -32,8 +32,8 @@ app.use(express.urlencoded({ extended: true }));
 
 // Clerk auth middleware (populates req.auth)
 app.use(clerkMiddleware());
+console.log(process.env.DATABASE_URL);
 
-// Global rate limiter
 app.use(globalLimiter);
 
 // Health check

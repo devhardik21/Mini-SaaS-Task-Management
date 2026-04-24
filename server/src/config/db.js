@@ -18,7 +18,7 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
     }
 });
 
-console.log(sequelize);
+//console.log(sequelize);
 
 
 export default sequelize;
