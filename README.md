@@ -3,6 +3,8 @@
 A production-ready, full-stack Task Management application featuring Clerk authentication, role-based access control, real-time activity logging, and data-driven insights.
 
 ---
+Landing page
+![alt text](screencapture-mini-saas-task-management-vercel-app-2026-04-24-17_09_41.png)
 
 ## 🛠️ Tech Stack
 
@@ -128,6 +130,14 @@ npm run dev
 ```
 
 ---
+Screenshots
+Main dashboard
+![alt text](<main dashboard.png>)
+Tasks page
+![alt text](tasks.png)
+Activity page
+![alt text](activity.png)
+
 
 ## 🔌 API Documentation
 
