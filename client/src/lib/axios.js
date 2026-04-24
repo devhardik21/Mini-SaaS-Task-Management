@@ -1,9 +1,10 @@
 import axios from 'axios';
-
+import { DEPLOYED_URL } from '../api/api';
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5000',
+    baseURL: DEPLOYED_URL || 'http://localhost:8000',
     headers: { 'Content-Type': 'application/json' },
 });
+console.log(`hitting ${api.defaults.baseURL}`);
 
 // Attach Clerk session token to every request
 api.interceptors.request.use(async (config) => {
