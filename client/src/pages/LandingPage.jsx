@@ -84,7 +84,7 @@ export default function LandingPage() {
                             Get Started Free <ArrowRight size={18} />
                         </button>
                     </SignInButton>
-                    <a href="https://github.com" target="_blank" rel="noreferrer" className="btn-ghost" style={{ padding: '14px 28px', fontSize: '1rem', textDecoration: 'none' }}>
+                    <a href="https://github.com/devhardik21/Mini-SaaS-Task-Management" target="_blank" rel="noreferrer" className="btn-ghost" style={{ padding: '14px 28px', fontSize: '1rem', textDecoration: 'none' }}>
                         View Code
                     </a>
                 </div>
