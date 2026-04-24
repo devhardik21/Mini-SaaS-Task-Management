@@ -45,11 +45,11 @@ app.use('/api/activity', activityRoutes);
 app.use('/api/users', userRoutes);
 
 // 404 handler
+app.get('/', (_req, res) => res.send('Hello World!'));
 app.use((_req, res) => res.status(404).json({ error: 'Route not found' }));
 
 // Global error handler
 app.use(errorHandler);
-app.get('/', (_req, res) => res.send('Hello World!'));
 
 app.listen(PORT, () => {
     console.log(`🚀 Server running on http://localhost:${PORT}`);
